@@ -82,6 +82,6 @@ jobs:
     needs: verify
     uses: Platform-System/CI-CD/.github/workflows/build-vite.yml@main
     with:
-      image_name: 'platform-payment-ui'
+      image_name: 'payment-ui'
       push_image: true
     secrets: inherit
