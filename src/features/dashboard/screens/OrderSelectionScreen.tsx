@@ -11,7 +11,7 @@ import {
   Search 
 } from 'lucide-react';
 import { useTransactions } from '../hooks/useTransactions';
-import { Badge, Button, Card, CardContent, EmptyStatePanel, FilterBar, Spinner, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@platform-system/design-ui';
+import { Badge, Button, Card, CardContent, EmptyStatePanel, FilterBar, Spinner, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@system/design-ui';
 
 export const OrderSelectionScreen: React.FC = () => {
   // Pagination and hook for orders list
@@ -41,16 +41,16 @@ export const OrderSelectionScreen: React.FC = () => {
       const refCodeStrRaw = t.referenceCode.toString();
       const typeLower = t.referenceType.toLowerCase();
       
-      const platformLabel = typeLower === 'order' 
+      const referenceLabel = typeLower === 'order' 
         ? 'merchant store' 
         : typeLower === 'wallettopup' 
           ? 'nạp tiền ví' 
           : typeLower;
 
       const matchesCode = refCodeStr.includes(query) || refCodeStrRaw.includes(query);
-      const matchesPlatform = platformLabel.includes(query);
+      const matchesReference = referenceLabel.includes(query);
 
-      if (!matchesCode && !matchesPlatform) return false;
+      if (!matchesCode && !matchesReference) return false;
     }
 
     return true;
@@ -172,7 +172,7 @@ export const OrderSelectionScreen: React.FC = () => {
                   </TableHeader>
                   <TableBody>
                     {filteredTransactions.map((t) => {
-                      const getPlatformLabel = (refType: string) => {
+                      const getReferenceLabel = (refType: string) => {
                         switch (refType.toLowerCase()) {
                           case 'order':
                             return { label: 'Merchant Store', icon: <ShoppingBag size={14} className="text-muted-foreground" /> };
@@ -215,7 +215,7 @@ export const OrderSelectionScreen: React.FC = () => {
                         }
                       };
 
-                      const platform = getPlatformLabel(t.referenceType);
+                      const reference = getReferenceLabel(t.referenceType);
                       return (
                         <TableRow key={t.paymentId}>
                           <TableCell className="py-4 px-6 font-semibold tracking-tight text-foreground">
@@ -223,8 +223,8 @@ export const OrderSelectionScreen: React.FC = () => {
                           </TableCell>
                           <TableCell className="py-4 px-6">
                             <div className="flex items-center gap-2">
-                              {platform.icon}
-                              <span className="font-medium text-muted-foreground">{platform.label}</span>
+                              {reference.icon}
+                              <span className="font-medium text-muted-foreground">{reference.label}</span>
                             </div>
                           </TableCell>
                           <TableCell className="py-4 px-6 font-bold text-foreground">

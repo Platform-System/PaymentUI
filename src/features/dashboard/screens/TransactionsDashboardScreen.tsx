@@ -16,7 +16,7 @@ import {
   TrendingUp,
   RotateCw
 } from 'lucide-react';
-import { Badge, Button, Card, CardContent, Spinner, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TopbarShell, cn } from '@platform-system/design-ui';
+import { Badge, Button, Card, CardContent, Spinner, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TopbarShell, cn } from '@system/design-ui';
 import { apiClient } from '../../../shared/api/apiClient';
 
 interface Result<T> {
@@ -114,7 +114,7 @@ export const TransactionsDashboardScreen: React.FC = () => {
     return value.toLocaleString('vi-VN') + ' ' + (currency === 'VND' || !currency ? 'đ' : currency);
   };
 
-  const getPlatformLabel = (refType: string) => {
+  const getReferenceLabel = (refType: string) => {
     switch (refType.toLowerCase()) {
       case 'order':
         return { label: 'Đơn hàng Merchant', icon: <ShoppingBag size={14} className="text-muted-foreground" /> };
@@ -312,7 +312,7 @@ export const TransactionsDashboardScreen: React.FC = () => {
                   </TableHeader>
                   <TableBody>
                     {transactions.map((t) => {
-                      const platform = getPlatformLabel(t.referenceType);
+                      const reference = getReferenceLabel(t.referenceType);
                       return (
                         <TableRow key={t.paymentId}>
                           <TableCell className="py-4 px-6 font-semibold tracking-tight text-foreground">
@@ -320,8 +320,8 @@ export const TransactionsDashboardScreen: React.FC = () => {
                           </TableCell>
                           <TableCell className="py-4 px-6">
                             <div className="flex items-center gap-2">
-                              {platform.icon}
-                              <span className="font-medium text-muted-foreground">{platform.label}</span>
+                              {reference.icon}
+                              <span className="font-medium text-muted-foreground">{reference.label}</span>
                             </div>
                           </TableCell>
                           <TableCell className="py-4 px-6 font-bold text-foreground">

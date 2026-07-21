@@ -10,7 +10,7 @@ import {
   Shield
 } from 'lucide-react';
 import { useAuth } from '../../../core/auth-context';
-import { Avatar, AvatarFallback, AvatarImage, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, UserProfileCard, HeaderLayout, UserProfileDropdown } from '@platform-system/design-ui';
+import { Avatar, AvatarFallback, AvatarImage, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, UserProfileCard, HeaderLayout, UserProfileDropdown } from '@system/design-ui';
 import { OrderSelectionScreen } from '../../dashboard';
 import { CheckoutProcessingScreen } from './CheckoutProcessingScreen';
 import { apiClient } from '../../../shared/api/apiClient';

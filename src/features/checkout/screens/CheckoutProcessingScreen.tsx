@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CheckCircle2, XCircle } from 'lucide-react';
-import { Button, Separator } from '@platform-system/design-ui';
+import { Button, Separator } from '@system/design-ui';
 import { useCompleteCheckout } from '../hooks/useCheckout';
 import { useCheckoutCountdown } from '../hooks/useCheckoutCountdown';
 import { OrderSummary } from '../components/OrderSummary';
